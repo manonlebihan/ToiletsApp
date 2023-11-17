@@ -10,7 +10,6 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var toggleSwitch: UISwitch!
     
     var toilets: [Record] = []
     var filteredToilets: [Record] = []
@@ -30,21 +29,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             filteredToilets = toilets
         }
         tableView.reloadData()
-    }
-    
-    func filterData() {
-        if toggleSwitch.isOn {
-            // Apply your filter criteria
-            filteredToilets = toilets.filter { $0.fields.accesPmr == "Oui" }
-        } else {
-            // No filter, use original data
-            filteredToilets = toilets
-        }
-        tableView.reloadData()
-    }
-    
-    @IBAction func toggleSwitched(_ sender: Any) {
-        filterData()
     }
     
     func receivedUrl() {
