@@ -85,20 +85,40 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" alignment="center" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="TaC-Iw-Xjf">
+                                <rect key="frame" x="233" y="128" width="145" height="31"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Accès PMR :" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999999999999996" translatesAutoresizingMaskIntoConstraints="NO" id="xyL-wP-aC8">
+                                        <rect key="frame" x="0.0" y="7" width="81" height="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VAO-TW-6Di">
+                                        <rect key="frame" x="96" y="0.0" width="51" height="31"/>
+                                        <connections>
+                                            <action selector="toggleSwitched:" destination="BYZ-38-t0r" eventType="valueChanged" id="vUe-4f-xyb"/>
+                                        </connections>
+                                    </switch>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="oKm-4p-Mna" secondAttribute="trailing" constant="16" id="79e-mr-9Bc"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="TaC-Iw-Xjf" secondAttribute="trailing" constant="15" id="PyP-Oh-fzB"/>
                             <constraint firstItem="oKm-4p-Mna" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="UWs-gT-L4E"/>
                             <constraint firstItem="2ju-RI-5dD" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="d3g-2S-SXt"/>
                             <constraint firstAttribute="bottom" secondItem="2ju-RI-5dD" secondAttribute="bottom" id="lan-9B-R4r"/>
                             <constraint firstItem="2ju-RI-5dD" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="wzU-r4-3cU"/>
                             <constraint firstItem="oKm-4p-Mna" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="zfd-mU-kIW"/>
+                            <constraint firstItem="TaC-Iw-Xjf" firstAttribute="top" secondItem="oKm-4p-Mna" secondAttribute="bottom" constant="5" id="zj8-wc-rXP"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="tableView" destination="2ju-RI-5dD" id="eai-Um-ZWP"/>
+                        <outlet property="toggleSwitch" destination="VAO-TW-6Di" id="o6y-rG-48G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -10,8 +10,10 @@ import UIKit
 class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var toggleSwitch: UISwitch!
     
     var toilets: [Record] = []
+    var filteredToilets: [Record] = []
     let id = "ToiletCell"
     
     override func viewDidLoad() {
@@ -22,17 +24,33 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         // Do any additional setup after loading the view.
     }
     
+    func filterData() {
+        if toggleSwitch.isOn {
+            // Apply your filter criteria
+            filteredToilets = toilets.filter { $0.fields.accesPmr == "Oui" }
+        } else {
+            // No filter, use original data
+            filteredToilets = toilets
+        }
+        tableView.reloadData()
+    }
+    
+    @IBAction func toggleSwitched(_ sender: Any) {
+        filterData()
+    }
+    
     func receivedUrl() {
         APIHelper.shared.performRequest { toilets in
             DispatchQueue.main.async {
                 self.toilets = toilets
+                self.filteredToilets = toilets
                 self.tableView.reloadData()
             }
         }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return filteredToilets.count
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -40,7 +58,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let toilet = toilets[indexPath.row]
+        let toilet = filteredToilets[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: id) as? ToiletCell {
             cell.setup(toilet)
             return cell
@@ -56,4 +74,3 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return 130
     }
 }
-
