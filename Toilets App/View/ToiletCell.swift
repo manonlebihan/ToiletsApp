@@ -24,12 +24,13 @@ class ToiletCell: UITableViewCell {
             self.addressLbl.text = "Non renseigné"
         }
         if let openingHours = toilet.fields.horaire {
-            if openingHours == "Voir fiche équipement " {
+            if openingHours == "Voir fiche équipement" {
                 self.openingHours.text = "Horaires d'ouverture : Non renseigné"
+            } else {
+                self.openingHours.text = "Horaires d'ouverture : \(openingHours)"
             }
-            self.openingHours.text = "Horaires d'ouverture : \(openingHours)"
         } else {
-            self.openingHours.text = "Horaires d'ouverture : Non renseignéeeeee"
+            self.openingHours.text = "Horaires d'ouverture : Non renseigné"
         }
         self.distance.text = "Distance"
         if let prmAccess = toilet.fields.accesPmr {
