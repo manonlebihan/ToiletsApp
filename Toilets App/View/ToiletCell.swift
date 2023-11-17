@@ -39,4 +39,14 @@ class ToiletCell: UITableViewCell {
             self.prmAccess.text = "Pas d'infos"
         }
     }
+    
+    func showOnlyPrmAccessToilets(toilet: Record) {
+        if let prmAccess = toilet.fields.accesPmr { // we have something, is not nil
+            if prmAccess == "Oui" {
+                self.prmAccess.text = "Accès PMR : \(prmAccess)"
+            }
+        } else { // we don't have anything, is nil
+            self.prmAccess.text = " "
+        }
+    }
 }
