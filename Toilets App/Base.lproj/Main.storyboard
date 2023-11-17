@@ -97,7 +97,7 @@
                                     <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="VAO-TW-6Di">
                                         <rect key="frame" x="96" y="0.0" width="51" height="31"/>
                                         <connections>
-                                            <action selector="toggleSwitched:" destination="BYZ-38-t0r" eventType="valueChanged" id="vUe-4f-xyb"/>
+                                            <action selector="toggleSwitched:" destination="BYZ-38-t0r" eventType="valueChanged" id="KpO-aI-n6c"/>
                                         </connections>
                                     </switch>
                                 </subviews>
@@ -118,7 +118,6 @@
                     </view>
                     <connections>
                         <outlet property="tableView" destination="2ju-RI-5dD" id="eai-Um-ZWP"/>
-                        <outlet property="toggleSwitch" destination="VAO-TW-6Di" id="o6y-rG-48G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

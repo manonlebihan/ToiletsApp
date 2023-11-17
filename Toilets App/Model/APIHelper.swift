@@ -20,7 +20,6 @@ class APIHelper {
     
     func performRequest(completion: @escaping (([Record]) -> Void)) {
         if let url = getUrl() {
-            print(url)
             URLSession.shared.dataTask(with: url) { data, _, _ in
                 if let d = data {
                     let decoder = JSONDecoder()
