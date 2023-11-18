@@ -6,20 +6,25 @@
 //
 
 import UIKit
+import CoreLocation
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-
+class ViewController: UIViewController {
+    
     @IBOutlet weak var tableView: UITableView!
     
     var toilets: [Record] = []
     var filteredToilets: [Record] = []
     let id = "ToiletCell"
     
+    var manager: CLLocationManager = CLLocationManager()
+    var currentUserLocation: CLLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        receivedUrl()
+        fetchToiletData()
         tableView.delegate = self
         tableView.dataSource = self
+        setupLocation()
     }
     
     @IBAction func toggleSwitched(_ sender: UISwitch) {
@@ -31,7 +36,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         tableView.reloadData()
     }
     
-    func receivedUrl() {
+    func fetchToiletData() {
         APIHelper.shared.parseData { toilets in
             DispatchQueue.main.async {
                 self.toilets = toilets
@@ -41,18 +46,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
+    func createLocation(_ geoPoint2d: [Double]) -> CLLocation? {
+        guard geoPoint2d.count == 2 else { return nil }
+        let lat = geoPoint2d[0]
+        let lon = geoPoint2d[1]
+        
+        return CLLocation(latitude: lat, longitude: lon)
+    }
+    
+    func distanceLocation(from userLocation: CLLocation, to point: [Double]) -> CLLocationDistance? {
+        guard let targetLocation = createLocation(point) else { return nil }
+        return userLocation.distance(from: targetLocation)
+    }
+}
+
+extension ViewController: UITableViewDelegate, UITableViewDataSource {
+    
     func numberOfSections(in tableView: UITableView) -> Int {
-        return filteredToilets.count
+        return 1
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return toilets.count
+        return filteredToilets.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let toilet = filteredToilets[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: id) as? ToiletCell {
             cell.setup(toilet)
+            if let userLocation = currentUserLocation {
+                if let distance = distanceLocation(from: userLocation, to: toilet.fields.geoPoint2d) {
+                    let distanceStr = "Distance : " + String(format: "%.2f km", distance / 1000)
+                    cell.distance.text = distanceStr
+                }
+            }
             return cell
         }
         return UITableViewCell()
@@ -64,5 +91,23 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130
+    }
+}
+
+extension ViewController: CLLocationManagerDelegate {
+     
+    func setupLocation() {
+        manager.delegate = self
+        manager.requestAlwaysAuthorization()
+        manager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print(error.localizedDescription)
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        currentUserLocation = locations.first
+        tableView.reloadData()
     }
 }

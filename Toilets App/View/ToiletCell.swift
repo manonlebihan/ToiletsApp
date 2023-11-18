@@ -32,7 +32,6 @@ class ToiletCell: UITableViewCell {
         } else {
             self.openingHours.text = "Horaires d'ouverture : Non renseigné"
         }
-        self.distance.text = "Distance"
         if let prmAccess = toilet.fields.accesPmr {
             self.prmAccess.text = "Accès PMR : \(prmAccess)"
         } else {

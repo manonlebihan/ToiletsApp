@@ -41,7 +41,7 @@ struct Fields: Decodable {
     let horaire: String?
     let accesPmr: String?
     let arrondissement: Int
-    let geoPoint2d: [Double]?
+    let geoPoint2d: [Double]
     let source: String?
     let gestionnaire: String?
     let adresse: String?
