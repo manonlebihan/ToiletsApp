@@ -11,14 +11,11 @@ class APIHelper {
     
     static let shared = APIHelper()
     
-    let apiEntryPoint = "https://data.ratp.fr/api/records/1.0/search/?dataset=sanisettesparis2011&start=0&rows=1000"
-    
     func getUrl() -> URL? {
-        let urlString = apiEntryPoint
-        return URL(string: urlString)
+        return URL(string: "https://data.ratp.fr/api/records/1.0/search/?dataset=sanisettesparis2011&start=0&rows=1000")
     }
     
-    func performRequest(completion: @escaping (([Record]) -> Void)) {
+    func parseData(completion: @escaping (([Record]) -> Void)) {
         if let url = getUrl() {
             URLSession.shared.dataTask(with: url) { data, _, _ in
                 if let d = data {

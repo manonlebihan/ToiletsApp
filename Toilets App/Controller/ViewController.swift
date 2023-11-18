@@ -32,7 +32,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
     
     func receivedUrl() {
-        APIHelper.shared.performRequest { toilets in
+        APIHelper.shared.parseData { toilets in
             DispatchQueue.main.async {
                 self.toilets = toilets
                 self.filteredToilets = toilets
