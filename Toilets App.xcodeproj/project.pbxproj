@@ -16,6 +16,11 @@
 		9E185DCB2B06B9C400CFC772 /* APIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E185DCA2B06B9C400CFC772 /* APIHelper.swift */; };
 		9E185DCD2B06C2C800CFC772 /* APIResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E185DCC2B06C2C800CFC772 /* APIResults.swift */; };
 		9E185DCF2B06D5D900CFC772 /* ToiletCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E185DCE2B06D5D800CFC772 /* ToiletCell.swift */; };
+		9E6B6CD62B097550003D53A7 /* MapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6B6CD52B097550003D53A7 /* MapVC.swift */; };
+		9E6B6CD82B0975D3003D53A7 /* ToiletAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6B6CD72B0975D3003D53A7 /* ToiletAnnotation.swift */; };
+		9E6B6CDA2B097B87003D53A7 /* DataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6B6CD92B097B87003D53A7 /* DataStorage.swift */; };
+		9E6B6CDC2B097EBE003D53A7 /* LocationUtility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E6B6CDB2B097EBE003D53A7 /* LocationUtility.swift */; };
+		9ECCA73C2B0962030060F628 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ECCA73B2B0962030060F628 /* DetailVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +35,11 @@
 		9E185DCA2B06B9C400CFC772 /* APIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIHelper.swift; sourceTree = "<group>"; };
 		9E185DCC2B06C2C800CFC772 /* APIResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResults.swift; sourceTree = "<group>"; };
 		9E185DCE2B06D5D800CFC772 /* ToiletCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletCell.swift; sourceTree = "<group>"; };
+		9E6B6CD52B097550003D53A7 /* MapVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapVC.swift; sourceTree = "<group>"; };
+		9E6B6CD72B0975D3003D53A7 /* ToiletAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToiletAnnotation.swift; sourceTree = "<group>"; };
+		9E6B6CD92B097B87003D53A7 /* DataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorage.swift; sourceTree = "<group>"; };
+		9E6B6CDB2B097EBE003D53A7 /* LocationUtility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationUtility.swift; sourceTree = "<group>"; };
+		9ECCA73B2B0962030060F628 /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +89,8 @@
 			isa = PBXGroup;
 			children = (
 				9E185DB52B06B8F500CFC772 /* ViewController.swift */,
+				9ECCA73B2B0962030060F628 /* DetailVC.swift */,
+				9E6B6CD52B097550003D53A7 /* MapVC.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -87,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				9E185DCE2B06D5D800CFC772 /* ToiletCell.swift */,
+				9E6B6CD72B0975D3003D53A7 /* ToiletAnnotation.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -96,6 +109,8 @@
 			children = (
 				9E185DCA2B06B9C400CFC772 /* APIHelper.swift */,
 				9E185DCC2B06C2C800CFC772 /* APIResults.swift */,
+				9E6B6CD92B097B87003D53A7 /* DataStorage.swift */,
+				9E6B6CDB2B097EBE003D53A7 /* LocationUtility.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -174,9 +189,14 @@
 				9E185DCB2B06B9C400CFC772 /* APIHelper.swift in Sources */,
 				9E185DB62B06B8F500CFC772 /* ViewController.swift in Sources */,
 				9E185DCF2B06D5D900CFC772 /* ToiletCell.swift in Sources */,
+				9E6B6CD82B0975D3003D53A7 /* ToiletAnnotation.swift in Sources */,
 				9E185DB22B06B8F500CFC772 /* AppDelegate.swift in Sources */,
 				9E185DB42B06B8F500CFC772 /* SceneDelegate.swift in Sources */,
+				9E6B6CDC2B097EBE003D53A7 /* LocationUtility.swift in Sources */,
+				9E6B6CD62B097550003D53A7 /* MapVC.swift in Sources */,
+				9E6B6CDA2B097B87003D53A7 /* DataStorage.swift in Sources */,
 				9E185DCD2B06C2C800CFC772 /* APIResults.swift in Sources */,
+				9ECCA73C2B0962030060F628 /* DetailVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

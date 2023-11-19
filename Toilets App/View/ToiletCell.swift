@@ -35,7 +35,7 @@ class ToiletCell: UITableViewCell {
         if let prmAccess = toilet.fields.accesPmr {
             self.prmAccess.text = "Accès PMR : \(prmAccess)"
         } else {
-            self.prmAccess.text = "Pas d'infos"
+            self.prmAccess.text = "Accès PMR : Non"
         }
     }
 }

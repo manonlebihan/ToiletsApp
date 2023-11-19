@@ -15,6 +15,8 @@ class ViewController: UIViewController {
     var toilets: [Record] = []
     var filteredToilets: [Record] = []
     let id = "ToiletCell"
+    let idDetail = "ToDetail"
+
     
     var manager: CLLocationManager = CLLocationManager()
     var currentUserLocation: CLLocation?
@@ -25,6 +27,14 @@ class ViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         setupLocation()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == idDetail {
+            if let detail = segue.destination as? DetailVC {
+                detail.toilet = sender as? Record
+            }
+        }
     }
     
     @IBAction func toggleSwitched(_ sender: UISwitch) {
@@ -39,6 +49,7 @@ class ViewController: UIViewController {
     func fetchToiletData() {
         APIHelper.shared.parseData { toilets in
             DispatchQueue.main.async {
+                DataStorage.shared.toilets = toilets
                 self.toilets = toilets
                 self.filteredToilets = toilets
                 self.tableView.reloadData()
@@ -46,16 +57,16 @@ class ViewController: UIViewController {
         }
     }
     
-    func createLocation(_ geoPoint2d: [Double]) -> CLLocation? {
+    /*func createLocation(_ geoPoint2d: [Double]) -> CLLocation? {
         guard geoPoint2d.count == 2 else { return nil }
         let lat = geoPoint2d[0]
         let lon = geoPoint2d[1]
         
         return CLLocation(latitude: lat, longitude: lon)
-    }
+    }*/
     
     func distanceLocation(from userLocation: CLLocation, to point: [Double]) -> CLLocationDistance? {
-        guard let targetLocation = createLocation(point) else { return nil }
+        guard let targetLocation = LocationUtility.createLocation(point) else { return nil }
         return userLocation.distance(from: targetLocation)
     }
 }
@@ -85,9 +96,10 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         return UITableViewCell()
     }
     
-    /*func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(toilets[indexPath.row].fields.adresse)
-    }*/
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let toilet = filteredToilets[indexPath.row]
+        performSegue(withIdentifier: idDetail, sender: toilet)
+    }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 130

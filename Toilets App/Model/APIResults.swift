@@ -7,7 +7,6 @@
 
 import Foundation
 
-
 struct APIResults: Decodable {
     let nhits: Int?
     let parameters: Parameters?
