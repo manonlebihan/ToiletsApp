@@ -21,24 +21,10 @@ class DetailVC: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        getLabels()
+        displayLabels()
     }
     
-    func createLocation(_ geoPoint2d: [Double]) -> CLLocation? {
-            guard geoPoint2d.count == 2 else { return nil }
-            return CLLocation(latitude: geoPoint2d[0], longitude: geoPoint2d[1])
-    }
-    
-    func displayDistance() -> String {
-        guard let toilet = toilet, let userLocation = userLocation, let toiletLocation = createLocation(toilet.fields.geoPoint2d) else {
-            return "Distance : inconnue"
-        }
-        let distance = userLocation.distance(from: toiletLocation)
-        let distanceInKilometers = distance / 1000
-        return String(format: "Distance : %.2f km", distanceInKilometers)
-    }
-    
-    func getLabels() {
+    func displayLabels() {
         if let address = toilet?.fields.adresse, let district = toilet?.fields.arrondissement {
             addressDetail.text = "Localisation des toilettes : \n\(address), \(district)"
         } else {
@@ -58,7 +44,12 @@ class DetailVC: UIViewController {
         } else {
             prmAccessDetail.text = "Accès personne à mobilité réduite (PMR) : \nNon renseigné"
         }
-        let distance = displayDistance()
-        distanceDetail.text = "\(distance)"
+        if let userLoc = userLocation {
+            if let toiletObj = toilet, let distance = LocationUtility.distanceLocation(from: userLoc, to: toiletObj.fields.geoPoint2d) {
+                distanceDetail.text = String(format: "Distance : %.2f km", distance / 1000)
+            } else {
+                distanceDetail.text = "Distance : inconnue"
+            }
+        }
     }
 }

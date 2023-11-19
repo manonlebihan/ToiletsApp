@@ -58,14 +58,6 @@ class ViewController: UIViewController {
         }
     }
     
-    /*func createLocation(_ geoPoint2d: [Double]) -> CLLocation? {
-        guard geoPoint2d.count == 2 else { return nil }
-        let lat = geoPoint2d[0]
-        let lon = geoPoint2d[1]
-        
-        return CLLocation(latitude: lat, longitude: lon)
-    }*/
-    
     func distanceLocation(from userLocation: CLLocation, to point: [Double]) -> CLLocationDistance? {
         guard let targetLocation = LocationUtility.createLocation(point) else { return nil }
         return userLocation.distance(from: targetLocation)
@@ -86,11 +78,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         let toilet = filteredToilets[indexPath.row]
         if let cell = tableView.dequeueReusableCell(withIdentifier: id) as? ToiletCell {
             cell.setup(toilet)
-            if let userLocation = currentUserLocation {
-                if let distance = distanceLocation(from: userLocation, to: toilet.fields.geoPoint2d) {
+            if let userLocation = currentUserLocation, let distance = LocationUtility.distanceLocation(from: userLocation, to: toilet.fields.geoPoint2d) {
                     let distanceStr = "Distance : " + String(format: "%.2f km", distance / 1000)
                     cell.distance.text = distanceStr
-                }
             }
             return cell
         }
