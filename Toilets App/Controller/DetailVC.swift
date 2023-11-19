@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class DetailVC: UIViewController {
     
@@ -16,9 +17,25 @@ class DetailVC: UIViewController {
     
     var toilet: Record?
     
+    var userLocation: CLLocation?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getLabels()
+    }
+    
+    func createLocation(_ geoPoint2d: [Double]) -> CLLocation? {
+            guard geoPoint2d.count == 2 else { return nil }
+            return CLLocation(latitude: geoPoint2d[0], longitude: geoPoint2d[1])
+    }
+    
+    func displayDistance() -> String {
+        guard let toilet = toilet, let userLocation = userLocation, let toiletLocation = createLocation(toilet.fields.geoPoint2d) else {
+            return "Distance : inconnue"
+        }
+        let distance = userLocation.distance(from: toiletLocation)
+        let distanceInKilometers = distance / 1000
+        return String(format: "Distance : %.2f km", distanceInKilometers)
     }
     
     func getLabels() {
@@ -41,6 +58,7 @@ class DetailVC: UIViewController {
         } else {
             prmAccessDetail.text = "Accès personne à mobilité réduite (PMR) : \nNon renseigné"
         }
-        distanceDetail.text = "Distance"
+        let distance = displayDistance()
+        distanceDetail.text = "\(distance)"
     }
 }

@@ -33,6 +33,7 @@ class ViewController: UIViewController {
         if segue.identifier == idDetail {
             if let detail = segue.destination as? DetailVC {
                 detail.toilet = sender as? Record
+                detail.userLocation = self.currentUserLocation
             }
         }
     }

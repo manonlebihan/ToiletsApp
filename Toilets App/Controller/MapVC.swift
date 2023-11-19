@@ -21,7 +21,7 @@ class MapVC: UIViewController {
     }
     
     func loadAnnotations() {
-        allToilets = DataStorage.shared.toilets // Reload the data
+        allToilets = DataStorage.shared.toilets
         allToilets.forEach { toilet in
             let anno = ToiletAnnotation(toilet)
             map.addAnnotation(anno)
