@@ -26,14 +26,3 @@ class ToiletAnnotation: NSObject, MKAnnotation {
         super.init()
     }
 }
-
-    
-    /*var toilet: Record
-    var name: String
-    var coordinate: CLLocationCoordinate2D
-    
-    init(_ toilet: Record) {
-        self.toilet = toilet
-        self.name = toilet.fields.adresse ?? "nothing"
-        self.coordinate = CLLocationCoordinate2D(latitude: 48.83997793898217, longitude: 2.3214109225079844)
-    }*/
