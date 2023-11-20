@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		9E185DB22B06B8F500CFC772 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E185DB12B06B8F500CFC772 /* AppDelegate.swift */; };
 		9E185DB42B06B8F500CFC772 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E185DB32B06B8F500CFC772 /* SceneDelegate.swift */; };
-		9E185DB62B06B8F500CFC772 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E185DB52B06B8F500CFC772 /* ViewController.swift */; };
+		9E185DB62B06B8F500CFC772 /* TableVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E185DB52B06B8F500CFC772 /* TableVC.swift */; };
 		9E185DB92B06B8F500CFC772 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E185DB72B06B8F500CFC772 /* Main.storyboard */; };
 		9E185DBB2B06B8F900CFC772 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E185DBA2B06B8F900CFC772 /* Assets.xcassets */; };
 		9E185DBE2B06B8F900CFC772 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E185DBC2B06B8F900CFC772 /* LaunchScreen.storyboard */; };
@@ -27,7 +27,7 @@
 		9E185DAE2B06B8F500CFC772 /* Toilets App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toilets App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E185DB12B06B8F500CFC772 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9E185DB32B06B8F500CFC772 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		9E185DB52B06B8F500CFC772 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9E185DB52B06B8F500CFC772 /* TableVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableVC.swift; sourceTree = "<group>"; };
 		9E185DB82B06B8F500CFC772 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9E185DBA2B06B8F900CFC772 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E185DBD2B06B8F900CFC772 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -88,7 +88,7 @@
 		9E185DC52B06B90500CFC772 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				9E185DB52B06B8F500CFC772 /* ViewController.swift */,
+				9E185DB52B06B8F500CFC772 /* TableVC.swift */,
 				9ECCA73B2B0962030060F628 /* DetailVC.swift */,
 				9E6B6CD52B097550003D53A7 /* MapVC.swift */,
 			);
@@ -187,7 +187,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E185DCB2B06B9C400CFC772 /* APIHelper.swift in Sources */,
-				9E185DB62B06B8F500CFC772 /* ViewController.swift in Sources */,
+				9E185DB62B06B8F500CFC772 /* TableVC.swift in Sources */,
 				9E185DCF2B06D5D900CFC772 /* ToiletCell.swift in Sources */,
 				9E6B6CD82B0975D3003D53A7 /* ToiletAnnotation.swift in Sources */,
 				9E185DB22B06B8F500CFC772 /* AppDelegate.swift in Sources */,

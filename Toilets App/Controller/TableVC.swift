@@ -8,7 +8,7 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController {
+class TableVC: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -17,7 +17,6 @@ class ViewController: UIViewController {
     let id = "ToiletCell"
     let idDetail = "ToDetail"
 
-    
     var manager: CLLocationManager = CLLocationManager()
     var currentUserLocation: CLLocation?
     
@@ -64,7 +63,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UITableViewDelegate, UITableViewDataSource {
+extension TableVC: UITableViewDelegate, UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -97,7 +96,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-extension ViewController: CLLocationManagerDelegate {
+extension TableVC: CLLocationManagerDelegate {
      
     func setupLocation() {
         manager.delegate = self
